@@ -1,0 +1,24 @@
+{
+  "name": "rabisca-backend",
+  "version": "0.1.0",
+  "description": "Backend seguro para aplicativo de desenho colaborativo infantil",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:prod": "NODE_ENV=production node server.js",
+    "dev": "nodemon server.js",
+    "loadtest": "node tools/load_test.js",
+    "lint": "echo \"Add linter scripts\""
+  },
+  "author": "Rabisca",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "redis": "^4.6.7",
+    "socket.io": "^4.7.1",
+    "socket.io-client": "^4.7.1",
+    "@socket.io/redis-adapter": "^7.2.0"
+  }
+}

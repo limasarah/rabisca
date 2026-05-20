@@ -1,0 +1,10 @@
+{
+  "name": "rabisca-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Frontend estático do Rabisca (HTML/CSS/JS)",
+  "scripts": {
+    "start": "npx http-server ./ -p 3000",
+    "build": "node scripts/inject-backend-url.js && echo \"Build complete (env.js generated)\""
+  }
+}

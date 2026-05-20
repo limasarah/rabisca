@@ -1,0 +1,23 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.js
+
+# Logs
+*.log
+nohup.out
+
+# Banco de dados e arquivos locais do Redis
+*.rdb
+tmp-redis-*
+redis-*
+
+# Variáveis de ambiente secretas
+.env
+.env.local
+
+# Builds e temporários do Flutter / Mobile
+.dart_tool/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies

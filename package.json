@@ -1,0 +1,19 @@
+{
+  "name": "rabisca",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start:backend": "node backend/server.js",
+    "dev:backend": "nodemon backend/server.js",
+    "start:frontend": "npx serve frontend -l 3000",
+    "build:frontend": "cd frontend && npm run build",
+    "build": "npm run build:frontend",
+    "start:prod": "NODE_ENV=production node backend/server.js",
+    "start": "npm run build && npm run start:prod",
+    "smoke": "concurrently \"npm:dev:backend\" \"npm:start:frontend\"",
+    "lint": "echo \"No linter configured\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: rabisca-backend
+    env: node
+    plan: free
+    branch: main
+    buildCommand: "cd backend && npm install"
+    startCommand: "cd backend && npm run start"
+    envVars:
+      - key: PORT
+        value: "4000"
+      - key: REDIS_URL
+        value: "redis://your-redis-host:6379"
+      - key: CLIENT_URL
+        value: "https://your-frontend.vercel.app"

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Rabisca</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.socket.io/4.7.1/socket.io.min.js" defer></script>
+  <script src="env.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="top-bar">
+      <h1>Rabisca</h1>
+      <p>Desenho colaborativo seguro para família</p>
+    </header>
+
+    <main>
+      <section class="panel" id="entry-panel">
+        <div class="card">
+          <h2>Entre com um apelido</h2>
+          <input id="nickname" type="text" placeholder="Ex: Nina" maxlength="16" />
+          <div class="button-row">
+            <button id="btn-create">Criar sala</button>
+            <button id="btn-join">Entrar em sala</button>
+          </div>
+          <div class="join-code-group" id="join-group">
+            <input id="room-code" type="text" placeholder="Código da sala" maxlength="6" />
+          </div>
+        </div>
+      </section>
+
+      <section class="panel hidden" id="room-panel">
+        <div class="card room-header">
+          <div>
+            <strong>Sala:</strong> <span id="room-label">---</span>
+          </div>
+          <div>
+            <strong>Modo:</strong>
+            <select id="mode-select">
+              <option value="free">Desenho Livre</option>
+              <option value="guess">Tema & Adivinhação</option>
+              <option value="story">História (telefone sem fio)</option>
+            </select>
+          </div>
+          <div>
+            <strong>Jogadores:</strong>
+            <span id="player-count">0</span>
+          </div>
+        </div>
+
+        <div class="mode-extra hidden" id="mode-extra">
+          <p class="room-meta" id="room-meta">Modo ativo</p>
+
+          <div class="guess-section hidden" id="guess-section">
+            <p id="guess-prompt">Adivinhe o tema</p>
+            <div id="guess-options" class="guess-options"></div>
+            <div class="guess-form-row">
+              <input id="guess-input" type="text" placeholder="Digite sua resposta..." />
+              <button id="guess-submit" class="action-btn">Enviar Adivinhação</button>
+            </div>
+          </div>
+
+          <div class="story-section hidden" id="story-section">
+            <p id="story-phase">História</p>
+            <div id="story-content"></div>
+          </div>
+        </div>
+
+        <div class="canvas-toolbar">
+          <div class="tool-group">
+            <button class="tool-btn selected" data-tool="pencil">Lápis</button>
+            <button class="tool-btn" data-tool="brush">Pincel</button>
+            <button class="tool-btn" data-tool="eraser">Borracha</button>
+          </div>
+          <div class="tool-group">
+            <button class="tool-btn" data-thickness="2">Fino</button>
+            <button class="tool-btn selected" data-thickness="6">Médio</button>
+            <button class="tool-btn" data-thickness="12">Grosso</button>
+          </div>
+          <div class="color-palette">
+            <button class="color-btn selected" style="background:#ff6f61" data-color="#ff6f61"></button>
+            <button class="color-btn" style="background:#ffcd3c" data-color="#ffcd3c"></button>
+            <button class="color-btn" style="background:#6bc1ff" data-color="#6bc1ff"></button>
+            <button class="color-btn" style="background:#7d5fff" data-color="#7d5fff"></button>
+            <button class="color-btn" style="background:#39d98a" data-color="#39d98a"></button>
+          </div>
+          <button id="btn-clear" class="action-btn">Limpar Tudo</button>
+        </div>
+
+        <div class="board">
+          <canvas id="draw-canvas"></canvas>
+        </div>
+
+        <div class="chat-panel">
+          <div class="quick-messages" id="quick-messages"></div>
+          <div class="log" id="chat-log"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
